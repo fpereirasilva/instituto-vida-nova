@@ -1,10 +1,14 @@
 import { projetos } from './dados.js';
 
+const BASE_IMG = document.querySelector('meta[name="base-imagens"]')?.content || '../images/';
 const escapar = (texto) => String(texto).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 export const cardProjeto = ({ id, titulo, categoria, imagem, alt, descricao }) => `
   <article class="card" data-categoria="${categoria}" id="projeto-${id}">
-    <img src="../images/${imagem}" alt="${alt}" loading="lazy">
+    <picture>
+      <source srcset="${BASE_IMG}${imagem.replace(/\.\w+$/, '.webp')}" type="image/webp">
+      <img src="${BASE_IMG}${imagem}" alt="${alt}" loading="lazy" width="800" height="500">
+    </picture>
     <div class="card__corpo">
       <span class="card__tag">${categoria}</span>
       <h3>${titulo}</h3>
