@@ -1,4 +1,4 @@
-:root{--verde:#2e8b57;--verde-escuro:#1e5a3c;--cinza:#f4f6f5;--erro:#c0392b;--texto:#222}
+:root{--verde:#1e7a4a;--verde-escuro:#1e5a3c;--cinza:#f4f6f5;--erro:#a93226;--texto:#222}
 body{font-family:system-ui,Arial,sans-serif;color:var(--texto);background:var(--cinza);line-height:1.5}
 .topo{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .topo__logo{height:56px}
@@ -34,3 +34,8 @@ input.valido,select.valido{border-color:var(--verde)}
   .menu__lista{display:none;flex-direction:column;position:absolute;right:1rem;top:80px;background:#fff;padding:1rem;box-shadow:0 4px 10px rgba(0,0,0,.15)}
   .menu__lista.aberto{display:flex}
 }
+.pular-link{position:absolute;left:-9999px;top:0;background:#fff;color:var(--verde-escuro);padding:.75rem 1rem;z-index:100}
+.pular-link:focus{left:1rem}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f5b400;outline-offset:2px}
+.visualmente-oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
