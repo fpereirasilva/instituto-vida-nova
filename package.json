@@ -1,0 +1,17 @@
+{
+  "name": "instituto-vida-nova",
+  "version": "1.0.0",
+  "description": "SPA do Instituto Vida Nova - cadastro de voluntários e vitrine de projetos sociais",
+  "author": "Fabio Pereira da Silva",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . -l 5173",
+    "images": "node scripts/images.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "npx serve dist -l 4173"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "sharp": "^0.33.5"
+  }
+}

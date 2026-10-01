@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="base-imagens" content="../images/">
+  <title>Instituto Vida Nova</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script>
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <a href="#app" class="pular-link">Pular para o conteúdo</a>
+  <header class="topo">
+    <img src="../images/logo-instituto-vida-nova.png" alt="Logotipo do Instituto Vida Nova" class="topo__logo">
+    <nav class="menu" aria-label="Navegação principal">
+      <button class="menu__toggle" aria-expanded="false" aria-controls="menu-lista" aria-label="Abrir menu de navegação">Menu</button>
+      <ul id="menu-lista" class="menu__lista">
+        <li><a href="#/inicio" data-link>Início</a></li>
+        <li><a href="#/projetos" data-link>Projetos</a></li>
+        <li><a href="#/cadastro" data-link>Cadastre-se</a></li>
+        <li><a href="#/voluntarios" data-link>Voluntários</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1" aria-live="polite"></main>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <footer class="rodape">
+    <p>&copy; 2026 Instituto Vida Nova - Transformando vidas pela educação e solidariedade.</p>
+    <p>Desenvolvido por Fabio Pereira da Silva</p>
+  </footer>
+</body>
+</html>
