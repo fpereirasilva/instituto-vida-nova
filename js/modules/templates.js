@@ -28,10 +28,10 @@ export const paginaProjetos = () => `
   <section>
     <h1>Nossos projetos sociais</h1>
     <div class="filtros" role="group" aria-label="Filtrar projetos">
-      <button class="filtro ativo" data-filtro="todos">Todos</button>
-      <button class="filtro" data-filtro="Educação">Educação</button>
-      <button class="filtro" data-filtro="Capacitação">Capacitação</button>
-      <button class="filtro" data-filtro="Meio ambiente">Meio ambiente</button>
+      <button class="filtro ativo" data-filtro="todos" aria-pressed="true">Todos</button>
+      <button class="filtro" data-filtro="Educação" aria-pressed="false">Educação</button>
+      <button class="filtro" data-filtro="Capacitação" aria-pressed="false">Capacitação</button>
+      <button class="filtro" data-filtro="Meio ambiente" aria-pressed="false">Meio ambiente</button>
     </div>
     <div class="grade" id="lista-projetos">${projetos.map(cardProjeto).join('')}</div>
   </section>`;
@@ -43,39 +43,39 @@ export const paginaCadastro = () => `
       <fieldset>
         <legend>Dados pessoais</legend>
         <label for="nome">Nome completo</label>
-        <input type="text" id="nome" name="nome" required minlength="3">
-        <span class="erro" id="erro-nome"></span>
+        <input type="text" id="nome" name="nome" required minlength="3" aria-describedby="erro-nome" autocomplete="name">
+        <span class="erro" aria-live="polite" id="erro-nome"></span>
 
         <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
-        <span class="erro" id="erro-email"></span>
+        <input type="email" id="email" name="email" required aria-describedby="erro-email" autocomplete="email">
+        <span class="erro" aria-live="polite" id="erro-email"></span>
 
         <label for="cpf">CPF</label>
-        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00">
-        <span class="erro" id="erro-cpf"></span>
+        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" aria-describedby="erro-cpf" autocomplete="off">
+        <span class="erro" aria-live="polite" id="erro-cpf"></span>
 
         <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
-        <span class="erro" id="erro-telefone"></span>
+        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" aria-describedby="erro-telefone" autocomplete="tel">
+        <span class="erro" aria-live="polite" id="erro-telefone"></span>
       </fieldset>
       <fieldset>
         <legend>Endereço</legend>
         <label for="cep">CEP</label>
-        <input type="text" id="cep" name="cep" required placeholder="00000-000">
-        <span class="erro" id="erro-cep"></span>
+        <input type="text" id="cep" name="cep" required placeholder="00000-000" aria-describedby="erro-cep" autocomplete="postal-code">
+        <span class="erro" aria-live="polite" id="erro-cep"></span>
 
         <label for="cidade">Cidade</label>
-        <input type="text" id="cidade" name="cidade" required>
-        <span class="erro" id="erro-cidade"></span>
+        <input type="text" id="cidade" name="cidade" required aria-describedby="erro-cidade" autocomplete="address-level2">
+        <span class="erro" aria-live="polite" id="erro-cidade"></span>
       </fieldset>
       <fieldset>
         <legend>Interesse</legend>
         <label for="projeto">Projeto de interesse</label>
-        <select id="projeto" name="projeto" required>
+        <select id="projeto" name="projeto" required aria-describedby="erro-projeto">
           <option value="">Selecione</option>
           ${projetos.map(p => `<option value="${p.titulo}">${p.titulo}</option>`).join('')}
         </select>
-        <span class="erro" id="erro-projeto"></span>
+        <span class="erro" aria-live="polite" id="erro-projeto"></span>
       </fieldset>
       <button type="submit" class="btn">Enviar cadastro</button>
     </form>
@@ -89,7 +89,7 @@ export const paginaVoluntarios = (lista) => `
       : `<ul class="lista-voluntarios">${lista.map(v => `
           <li data-id="${v.id}">
             <strong>${escapar(v.nome)}</strong> - ${escapar(v.projeto)} <small>(${escapar(v.cidade)})</small>
-            <button class="btn btn--perigo" data-acao="remover" data-id="${v.id}">Remover</button>
+            <button class="btn btn--perigo" data-acao="remover" data-id="${v.id}" aria-label="Remover ${escapar(v.nome)}">Remover</button>
           </li>`).join('')}</ul>`}
   </section>`;
 

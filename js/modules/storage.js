@@ -10,22 +10,25 @@ export function listarVoluntarios() {
   }
 }
 
+// Retorna true só quando o navegador confirmou a gravação
 function gravar(lista) {
   try {
     localStorage.setItem(CHAVE, JSON.stringify(lista));
+    return true;
   } catch {
     mostrarToast('Não foi possível salvar no navegador.', 'erro');
+    return false;
   }
 }
 
 export function salvarVoluntario(dados) {
   const lista = listarVoluntarios();
   lista.push({ id: Date.now(), ...dados, criadoEm: new Date().toISOString() });
-  gravar(lista);
+  return gravar(lista);
 }
 
 export function removerVoluntario(id) {
-  gravar(listarVoluntarios().filter(v => v.id !== id));
+  return gravar(listarVoluntarios().filter(v => v.id !== id));
 }
 
 export function iniciarListaVoluntarios() {
@@ -34,8 +37,12 @@ export function iniciarListaVoluntarios() {
   lista.addEventListener('click', (e) => {
     const botao = e.target.closest('[data-acao="remover"]');
     if (!botao) return;
-    removerVoluntario(Number(botao.dataset.id));
+    if (!removerVoluntario(Number(botao.dataset.id))) return;
     botao.closest('li').remove();
+    // Removeu o último: mostra a mensagem de lista vazia sem precisar recarregar
+    if (!lista.children.length) {
+      lista.outerHTML = '<p>Nenhum voluntário cadastrado ainda. <a href="#/cadastro" data-link>Faça o primeiro cadastro</a>.</p>';
+    }
     mostrarToast('Voluntário removido.');
   });
 }
