@@ -1,4 +1,10 @@
 export function registrarEventosGlobais() {
+  // O skip link não pode alterar o hash, senão o roteador entende "#app" como uma rota
+  document.querySelector('.pular-link')?.addEventListener('click', (evento) => {
+    evento.preventDefault();
+    document.getElementById('app').focus();
+  });
+
   const toggle = document.querySelector('.menu__toggle');
   const lista = document.getElementById('menu-lista');
 
