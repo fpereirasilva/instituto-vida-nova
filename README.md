@@ -73,4 +73,4 @@ Commits seguem o padrão Conventional Commits (`feat:`, `fix:`, `docs:`, `build:
 
 ## Autor
 
-Fabio Silva
+Fabio Pereira da Silva - [@fpereirasilva](https://github.com/fpereirasilva)
