@@ -61,7 +61,7 @@ export function iniciarFormulario() {
     }
 
     const dados = Object.fromEntries(new FormData(form));
-    salvarVoluntario(dados);
+    if (!salvarVoluntario(dados)) return; // o erro já foi exibido pelo storage
     form.reset();
     mostrarToast(`Obrigado, ${dados.nome.split(' ')[0]}! Cadastro realizado.`);
     navegar('/voluntarios');
