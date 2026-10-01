@@ -10,6 +10,8 @@ const rotas = {
   '/voluntarios': { titulo: 'Voluntários', render: () => paginaVoluntarios(listarVoluntarios()), depois: iniciarListaVoluntarios }
 };
 
+let primeiraRenderizacao = true;
+
 function renderizar() {
   const caminho = window.location.hash.replace('#', '') || '/inicio';
   const rota = rotas[caminho];
@@ -25,7 +27,9 @@ function renderizar() {
   });
 
   if (rota && rota.depois) rota.depois();
-  app.focus();
+  // Na carga inicial o foco fica no topo (skip link); nas trocas de rota vai para o conteúdo
+  if (!primeiraRenderizacao) app.focus();
+  primeiraRenderizacao = false;
 }
 
 export function iniciarRouter() {
